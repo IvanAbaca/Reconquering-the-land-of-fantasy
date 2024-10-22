@@ -1,8 +1,8 @@
 package models;
 
 public abstract class Raza {
-    protected int maxhp;
-    protected int hp;
+    protected double maxhp;
+    protected double hp;
     protected int atk;
     
     public Raza(int maxhp, int atk) {
@@ -13,18 +13,18 @@ public abstract class Raza {
 	}
     
     protected abstract int atacar();
-    protected abstract void serAtacado(int dmg);
+    protected abstract void serAtacado(double dmg);
     protected abstract void descansar();
     
-	public int getMaxhp() {
+	public double getMaxhp() {
 		return maxhp;
 	}
 
-	public void setMaxhp(int maxhp) {
+	public void setMaxhp(double maxhp) {
 		this.maxhp = maxhp;
 	}
 
-	public int getHp() {
+	public double getHp() {
 		return hp;
 	}
 

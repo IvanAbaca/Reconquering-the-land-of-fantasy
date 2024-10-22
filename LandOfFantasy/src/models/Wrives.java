@@ -19,7 +19,7 @@ public class Wrives extends Raza{
 	}
 
 	@Override
-	protected void serAtacado(int dmg) {
+	protected void serAtacado(double dmg) {
 		atacado = true;
 		dmg *= 2;
 		hp -= dmg < hp ? dmg : hp;
@@ -28,7 +28,7 @@ public class Wrives extends Raza{
 	@Override
 	protected void descansar() {
 		atacado = false;
-		hp += 50;
+		hp = hp + 50 > maxhp ? maxhp : hp + 50;
 		maxhp += 50;
 	}
 }
