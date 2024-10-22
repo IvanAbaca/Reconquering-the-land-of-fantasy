@@ -11,8 +11,8 @@ public class Unidad implements Comparable<Unidad> {
     }
     
     //Public methods
-    public int getHp() {
-    	int hp = 0;
+    public double getHp() {
+    	double hp = 0;
     	
     	for(Raza soldado : soldados)
     		hp += soldado.getHp();
@@ -30,7 +30,7 @@ public class Unidad implements Comparable<Unidad> {
     }
     
     public void serAtacado(Unidad enemigo) {
-    	int atk = enemigo.atacar() / soldados.size();
+    	double atk = enemigo.atacar() / soldados.size();
     	
     	for(Raza soldado : soldados)
     		soldado.serAtacado(atk);
@@ -39,7 +39,6 @@ public class Unidad implements Comparable<Unidad> {
     }
     
     public boolean batallar(Unidad enemigo) {
-    	
     	while(true) {	
 	    	enemigo.serAtacado(this);
 	    	
@@ -63,6 +62,6 @@ public class Unidad implements Comparable<Unidad> {
     }
 
     public int compareTo(Unidad o) {	
-        return this.getHp() - o.getHp();
+        return (int)(this.getHp() - o.getHp());
     }
 }

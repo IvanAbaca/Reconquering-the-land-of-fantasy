@@ -19,7 +19,7 @@ public class Nortaichian extends Raza {
 	}
 
 	@Override
-	protected void serAtacado(int dmg) {
+	protected void serAtacado(double dmg) {
 		if(piedra > 0)
 			dmg /= 2;
 		

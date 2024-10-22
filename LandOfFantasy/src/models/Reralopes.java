@@ -21,7 +21,7 @@ public class Reralopes extends Raza {
 	}
 
 	@Override
-	protected void serAtacado(int dmg) {
+	protected void serAtacado(double dmg) {
 		ataque = 4;
 		hp -= dmg < hp ? dmg : hp;
 	}
@@ -29,6 +29,6 @@ public class Reralopes extends Raza {
 	@Override
 	protected void descansar() {
 		boost = 3;
-		hp += 50;
+		hp = hp + 50 > maxhp ? maxhp : hp + 50;
 	}
 }

@@ -14,7 +14,7 @@ public class Radaiteran extends Raza {
 	}
 
 	@Override
-	protected void serAtacado(int dmg) {
+	protected void serAtacado(double dmg) {
 		hp -= dmg < hp ? dmg : hp;	
 	}
 
