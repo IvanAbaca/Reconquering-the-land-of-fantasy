@@ -3,26 +3,30 @@ package models;
 import java.util.PriorityQueue;
 
 public class Ciudad {
-	public PriorityQueue<Raza> ejercito;
-	public boolean aliado;
-	private int numeroNodo;
-	private static int numeroInstancia = 1;
+	private PriorityQueue<Raza> ejercito;
+	private boolean aliado;
+	private int numero;
 	
-	public Ciudad(PriorityQueue<Unidad> ejercito, boolean aliado) {
+	public Ciudad(PriorityQueue<Raza> ejercito, boolean aliado, int numeroNodo) {
 		this.ejercito = ejercito;
 		this.aliado = aliado;
-		this.numeroNodo = numeroInstancia++;
+		this.numero = numeroNodo;
 	}
 	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Ciudad "+ numeroNodo +": " + (aliado ? "aliada" : "enemiga");
+		return "Ciudad "+ numero +": " + (aliado ? "aliada" : "enemiga");
 	}
 
 	public PriorityQueue<Raza> getEjercito() {
 		return ejercito;
 	}
+	
+	public int getNumero() {
+		return numero;
+	}
+
 	public boolean isAliado() {
 		return aliado;
 	}
