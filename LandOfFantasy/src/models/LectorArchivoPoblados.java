@@ -2,36 +2,28 @@ package models;
 
 import java.util.HashMap;
 import java.util.PriorityQueue;
-
-import utils.FileReaderOIA;
-import utils.Grafo;
 import utils.TextProcessor;
 
 public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> {
 
-	private int cantidadPueblos;
-	private int puebloInicial;
-	private int puebloFinal;
-	private Grafo<Ciudad> mapa = new Grafo<>(); //TODO: esto es solo como muestra, hay que modificar esto para que funcione como un singleton
-	
-	//TODO: ¿añadir constructor?
-	public static final String PATH = "LandOfFantasy/src/files/"; 
-	public static final String FILENAME = "pueblos.in";
 	public static final String REGEX = "\\s+";
+	public final String path; 
+	public final String filename;
 	
-	public static void main(String[] args) {
-		FileReaderOIA<LectorArchivoPoblados> reader = new FileReaderOIA<LectorArchivoPoblados>();
-		LectorArchivoPoblados example = new LectorArchivoPoblados();
-		
-		reader.fileReader(example, PATH, FILENAME);
-		
-		System.out.println(example.toString());
+	Mapa mapa;
+	
+	public LectorArchivoPoblados(String path, String filename) {
+		super();
+		this.mapa = Mapa.getMapa();
+		this.path = path;
+		this.filename = filename;
 	}
 	
 	@Override
 	public void textProcess(String[] line) {
 		
-		this.cantidadPueblos = Integer.parseInt(line[0]);
+		int cantidadPueblos = Integer.parseInt(line[0]);
+		this.mapa.setCantidadPueblos(cantidadPueblos);
 
 		HashMap<Integer, Ciudad> mapaAuxiliar = new HashMap<>();
 		for(int i = 1 ; i<cantidadPueblos+1 ; i++)
@@ -46,19 +38,18 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 			boolean aliado = !(datos[3].toLowerCase().equals("enemigo")); //Nota: el nodo propio lo consideramos como aliado acá
 			
 			Ciudad ciudad = new Ciudad(tropa, aliado, Integer.parseInt(datos[0]));
-			this.mapa.agregarNodo(ciudad);
+			this.mapa.getPoblados().agregarNodo(ciudad);
 			mapaAuxiliar.put(ciudad.getNumero(), ciudad);
 		}
 		
-		this.puebloInicial = Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[0]);
-		this.puebloFinal = Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[2]);
+		this.mapa.setPuebloInicial(Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[0]));
+		this.mapa.setPuebloFinal(Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[2]));
 		
-		for(int i = cantidadPueblos+3 ; i<line.length ; i++)
+		for(int i = cantidadPueblos+2 ; i<line.length ; i++)
 		{
 			String[] datos = line[i].split(REGEX);
-			this.mapa.agregarArista(mapaAuxiliar.get(Integer.parseInt(datos[0])), mapaAuxiliar.get(Integer.parseInt(datos[1])), Integer.parseInt(datos[2]));
+			this.mapa.getPoblados().agregarArista(mapaAuxiliar.get(Integer.parseInt(datos[0])), mapaAuxiliar.get(Integer.parseInt(datos[1])), Integer.parseInt(datos[2]));
 		}
-		
 	}
 
 	private Raza crearSoldado(String tipoSoldado)
@@ -88,21 +79,5 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 		
 		return soldado;
 	}
-	
-	@Override
-	public String toString() {
-//		String output = "----------------------------------------------"
-//				+ "\nword = " + word + "\nnumber = " + number + "\nvector = "
-//				+ Arrays.toString(vector) + "\nmatrix =";
-//		
-//		for(int[] v : matrix)
-//			output += "\n" + Arrays.toString(v);
-//		output += "\n----------------------------------------------";
-//		
-//		
-//		return output;
-		return "AAAAAAAAAAAAAA";
-	}
-	
 
 }
