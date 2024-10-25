@@ -6,8 +6,8 @@ public class Mapa {
 
 	private static Mapa instancia;
 	private int cantidadPueblos;
-	private int puebloInicial;
-	private int puebloFinal;
+	private Ciudad puebloInicial;
+	private Ciudad puebloFinal;
 	private Grafo<Ciudad> poblados;
 	
 	private Mapa() {
@@ -29,11 +29,11 @@ public class Mapa {
 		return cantidadPueblos;
 	}
 
-	public int getPuebloInicial() {
+	public Ciudad getPuebloInicial() {
 		return puebloInicial;
 	}
 
-	public int getPuebloFinal() {
+	public Ciudad getPuebloFinal() {
 		return puebloFinal;
 	}
 
@@ -41,11 +41,11 @@ public class Mapa {
 		this.cantidadPueblos = cantidadPueblos;
 	}
 
-	public void setPuebloInicial(int puebloInicial) {
+	public void setPuebloInicial(Ciudad puebloInicial) {
 		this.puebloInicial = puebloInicial;
 	}
 
-	public void setPuebloFinal(int puebloFinal) {
+	public void setPuebloFinal(Ciudad puebloFinal) {
 		this.puebloFinal = puebloFinal;
 	}
 	

@@ -7,16 +7,12 @@ import utils.TextProcessor;
 public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> {
 
 	public static final String REGEX = "\\s+";
-	public final String path; 
-	public final String filename;
 	
 	Mapa mapa;
 	
-	public LectorArchivoPoblados(String path, String filename) {
+	public LectorArchivoPoblados() {
 		super();
 		this.mapa = Mapa.getMapa();
-		this.path = path;
-		this.filename = filename;
 	}
 	
 	@Override
@@ -42,8 +38,8 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 			mapaAuxiliar.put(ciudad.getNumero(), ciudad);
 		}
 		
-		this.mapa.setPuebloInicial(Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[0]));
-		this.mapa.setPuebloFinal(Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[2]));
+		this.mapa.setPuebloInicial(mapaAuxiliar.get(Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[0])));
+		this.mapa.setPuebloFinal(mapaAuxiliar.get(Integer.parseInt(line[cantidadPueblos+1].split(REGEX)[2])));
 		
 		for(int i = cantidadPueblos+2 ; i<line.length ; i++)
 		{
