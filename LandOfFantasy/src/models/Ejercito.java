@@ -3,29 +3,35 @@ package models;
 import java.util.PriorityQueue;
 
 public class Ejercito {
-    PriorityQueue<Unidad> aliados;
-    PriorityQueue<Unidad> propios;
+    PriorityQueue<Raza> aliados;
+    PriorityQueue<Raza> propios;
     
-    public void encuentro(Ciudad ciudad) {
-    	if(ciudad.aliado)
-    		descansar(ciudad.ejercito);
+    public Ejercito(PriorityQueue<Raza> propios) {
+		super();
+		this.propios = propios;
+		this.aliados = new PriorityQueue<>();
+	}
+
+	public void encuentro(Ciudad ciudad) {
+    	if(ciudad.isAliado())
+    		descansar(ciudad.getEjercito());
     	else
-    		batallar(ciudad.ejercito);
+    		batallar(ciudad.getEjercito());
     }
     
-    public void descansar(PriorityQueue<Unidad> aliados) {
+    public void descansar(PriorityQueue<Raza> aliados) {
     	this.propios.forEach(unidad -> unidad.descansar());
-    	this.aliados.forEach(unidad -> unidad.descansar());
+    	this.aliados.forEach(unidad -> unidad.descansar()); //Nota: ¿los aliados deberían descansar el mismo turno en el que los reclutamos?
     	
     	this.aliados.addAll(aliados);
     }
     
-    public boolean batallar(PriorityQueue<Unidad> enemigos) {
+    public boolean batallar(PriorityQueue<Raza> enemigos) {
     	
-    	Unidad enemigo = enemigos.poll();
+    	Raza enemigo = enemigos.poll();
 		
     	// Pelea de los aliados
-    	Unidad aliado = aliados.poll();
+    	Raza aliado = aliados.poll();
     	while(aliado != null && enemigo != null)
     		if(aliado.batallar(enemigo))
     			enemigo = enemigos.poll();
@@ -37,9 +43,8 @@ public class Ejercito {
     		return true;
     	}
     	
-    	
 		// Pelea de los propios
-    	Unidad propio = propios.poll();
+    	Raza propio = propios.poll();
     	while(propio != null && enemigo != null)
     		if(propio.batallar(enemigo))
     			enemigo = enemigos.poll();
@@ -53,4 +58,9 @@ public class Ejercito {
     	
     	return false;
     }
+
+	@Override
+	public String toString() {
+		return "Ejercito [aliados=" + aliados + ", propios=" + propios + "]";
+	}
 }
