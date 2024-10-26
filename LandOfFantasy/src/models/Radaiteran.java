@@ -9,17 +9,17 @@ public class Radaiteran extends Raza {
 	}
 
 	@Override
-	protected int atacar() {
+	public int atacar() {
 		return atk*3*++turn;
 	}
 
 	@Override
-	protected void serAtacado(double dmg) {
+	public void serAtacado(double dmg) {
 		hp -= dmg < hp ? dmg : hp;	
 	}
 
 	@Override
-	protected void descansar() {
+	public void descansar() {
 		// No hace nada
 	}
 

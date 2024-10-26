@@ -10,7 +10,7 @@ public class Nortaichian extends Raza {
 	}
 
 	@Override
-	protected int atacar() {
+	public int atacar() {
 		if(piedra-- > 0)
 			return 0;
 		
@@ -19,7 +19,7 @@ public class Nortaichian extends Raza {
 	}
 
 	@Override
-	protected void serAtacado(double dmg) {
+	public void serAtacado(double dmg) {
 		if(piedra > 0)
 			dmg /= 2;
 		
@@ -28,7 +28,7 @@ public class Nortaichian extends Raza {
 	}
 
 	@Override
-	protected void descansar() {
+	public void descansar() {
 		piedra = 2;
 		hp = maxhp;
 	}

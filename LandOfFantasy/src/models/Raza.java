@@ -17,9 +17,9 @@ public abstract class Raza implements Comparable<Raza> {
 		this.atk = atk;
 	}
     
-    protected abstract int atacar();
-    protected abstract void serAtacado(double dmg);
-    protected abstract void descansar();
+    public abstract int atacar();
+    public abstract void serAtacado(double dmg);
+    public abstract void descansar();
     
     public boolean batallar(Raza enemigo) {
     	while(true) {	
