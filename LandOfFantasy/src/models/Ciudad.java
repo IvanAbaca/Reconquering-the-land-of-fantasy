@@ -16,7 +16,7 @@ public class Ciudad {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Ciudad "+ numero +": " + (aliado ? "aliada" : "enemiga");
+		return "("+ numero +", " + (aliado ? "aliada" : "enemiga") + ", " + this.ejercito.size() +", "+this.ejercito.peek().getClass() +")";
 	}
 
 	public PriorityQueue<Raza> getEjercito() {

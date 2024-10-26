@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class Ejercito {
@@ -8,8 +9,9 @@ public class Ejercito {
     
     public Ejercito(PriorityQueue<Raza> propios) {
 		super();
-		this.propios = propios;
-		this.aliados = new PriorityQueue<>();
+		this.propios = new PriorityQueue<>(Collections.reverseOrder());
+		this.aliados = new PriorityQueue<>(Collections.reverseOrder()); //Por defecto, la cola de prioridad pone al menor primero
+		this.propios.addAll(propios);
 	}
 
 	public void encuentro(Ciudad ciudad) {
@@ -21,7 +23,7 @@ public class Ejercito {
     
     public void descansar(PriorityQueue<Raza> aliados) {
     	this.propios.forEach(unidad -> unidad.descansar());
-    	this.aliados.forEach(unidad -> unidad.descansar()); //Nota: ¿los aliados deberían descansar el mismo turno en el que los reclutamos?
+    	this.aliados.forEach(unidad -> unidad.descansar());
     	
     	this.aliados.addAll(aliados);
     }
@@ -52,13 +54,17 @@ public class Ejercito {
     			propio = propios.poll();
     	
     	if(enemigo == null) {
-    		propios.add(aliado);
+    		propios.add(propio);
     		return true;
     	}
     	
     	return false;
     }
 
+    public boolean derrotado() {
+    	return this.aliados.isEmpty() && this.propios.isEmpty();
+    }
+    
 	@Override
 	public String toString() {
 		return "Ejercito [aliados=" + aliados + ", propios=" + propios + "]";
