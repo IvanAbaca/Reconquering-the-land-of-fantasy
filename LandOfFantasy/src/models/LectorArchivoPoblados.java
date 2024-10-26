@@ -34,7 +34,7 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 			boolean aliado = !(datos[3].toLowerCase().equals("enemigo")); //Nota: el nodo propio lo consideramos como aliado acá
 			
 			Ciudad ciudad = new Ciudad(tropa, aliado, Integer.parseInt(datos[0]));
-			this.mapa.getPoblados().agregarNodo(ciudad);
+//			this.mapa.getPoblados().agregarNodo(ciudad);
 			mapaAuxiliar.put(ciudad.getNumero(), ciudad);
 		}
 		
