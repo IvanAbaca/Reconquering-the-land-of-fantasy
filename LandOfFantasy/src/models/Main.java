@@ -1,8 +1,7 @@
 package models;
 
-import java.util.Map;
+import java.util.List;
 import utils.FileReaderOIA;
-import utils.Nodo;;
 
 public class Main {
 
@@ -19,11 +18,9 @@ public class Main {
 		
 		Mapa mapa = Mapa.getMapa();
 		Ejercito ejercito = new Ejercito(mapa.getPuebloInicial().getEjercito());
+		List<Ciudad> camino = mapa.getPoblados().obtenerCamino(mapa.getPuebloInicial(), mapa.getPuebloFinal());
 		
-		Map<Nodo<Ciudad>, Integer> caminos = mapa.getPoblados().dijkstra(mapa.getPuebloInicial());
-		
-		for(Map.Entry<Nodo<Ciudad>, Integer> entrada : caminos.entrySet())
-			System.out.println(entrada.getKey()+" "+entrada.getValue());
+		System.out.println(camino);
 		
 		System.out.println("======FIN======");
 	}
