@@ -72,7 +72,6 @@ public class Grafo<T> {
 			camino.addFirst(nodoActual);
 			nodoActual = predecesores.get(nodoActual);
 		}
-		camino.addFirst(nodoActual);
 		
 		return camino;
 	}

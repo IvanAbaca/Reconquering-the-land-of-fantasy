@@ -25,17 +25,17 @@ public abstract class Raza implements Comparable<Raza> {
     	while(true) {	
 	    	enemigo.serAtacado(this.atacar());
 	    	
-	    	if(enemigo.desmayado())
+	    	if(enemigo.derrotado())
 	    		return true;
 	    	
 	    	this.serAtacado(enemigo.atacar());
 	    	
-	    	if(this.desmayado())
+	    	if(this.derrotado())
 	    		return false;
     	}
     }
     
-	private boolean desmayado() {
+	private boolean derrotado() {
 		return hp<=0;
 	}
 
