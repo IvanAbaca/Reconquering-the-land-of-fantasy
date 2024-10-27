@@ -6,8 +6,8 @@ public abstract class Raza implements Comparable<Raza> {
 	//que ni usabamos en el tp anterior creo que menos le va a gustar
 	//todos estos doubles que están por acá, los vamos a tener que 
 	//cambiar más adelante.
-    protected double maxhp;
-    protected double hp;
+    protected int maxhp;
+    protected int hp;
     protected int atk;
     
     public Raza(int maxhp, int atk) {
@@ -43,7 +43,7 @@ public abstract class Raza implements Comparable<Raza> {
 		return maxhp;
 	}
 
-	public void setMaxhp(double maxhp) {
+	public void setMaxhp(int maxhp) {
 		this.maxhp = maxhp;
 	}
 
