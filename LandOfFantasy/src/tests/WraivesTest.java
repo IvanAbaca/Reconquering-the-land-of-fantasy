@@ -87,4 +87,10 @@ class WraivesTest {
 		//como algo malo, se rehúsa a atacar hasta que lo ataquen
 		assertEquals(0, w.atacar());
 	}
+	
+	@Test
+	void testGetAtkBasico() {
+		Wrives w = new Wrives();
+		assertEquals(DANIO_BASICO, w.getAtk());
+	}
 }

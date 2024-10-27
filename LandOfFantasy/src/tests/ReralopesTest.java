@@ -80,4 +80,10 @@ class ReralopesTest {
 		assertEquals(DANIO_BASICO, r.atacar());
 	}
 	
+	@Test
+	void testGetAtkBasico() {
+		Reralopes r = new Reralopes();
+		assertEquals(DANIO_BASICO, r.getAtk());
+	}
+	
 }

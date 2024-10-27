@@ -35,7 +35,7 @@ public abstract class Raza implements Comparable<Raza> {
     	}
     }
     
-	private boolean derrotado() {
+	public boolean derrotado() {
 		return hp<=0;
 	}
 
@@ -43,32 +43,15 @@ public abstract class Raza implements Comparable<Raza> {
 		return maxhp;
 	}
 
-	public void setMaxhp(int maxhp) {
-		this.maxhp = maxhp;
-	}
-
 	public double getHp() {
 		return hp;
-	}
-
-	public void setHp(int hp) {
-		this.hp = hp;
 	}
 
 	public int getAtk() {
 		return atk;
 	}
-
-	public void setAtk(int atk) {
-		this.atk = atk;
-	}
     
 	public int compareTo(Raza o) {	
         return (int)(this.getHp() - o.getHp());
     }
-
-	@Override
-	public String toString() {
-		return "Raza [maxhp=" + maxhp + ", hp=" + hp + ", atk=" + atk + "]";
-	}
 }

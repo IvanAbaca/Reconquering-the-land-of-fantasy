@@ -54,4 +54,10 @@ class RadaiteranTest {
 			assertEquals(DANIO_BASICO+i*AUMENTO_DANIO, r.atacar());
 	}
 	
+	@Test
+	void testGetAtkBasico() {
+		Radaiteran r = new Radaiteran();
+		assertEquals(DANIO_BASICO, r.getAtk());
+	}
+	
 }
