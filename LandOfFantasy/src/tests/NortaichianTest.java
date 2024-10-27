@@ -111,4 +111,10 @@ class NortaichianTest {
 		n.serAtacado(SALUD_INICIAL+1);
 		assertEquals(0, n.getHp());
 	}
+	
+	@Test
+	void testGetAtkBasico() {
+		Nortaichian n = new Nortaichian();
+		assertEquals(DANIO_BASICO, n.getAtk());
+	}
 }

@@ -14,7 +14,7 @@ public class Nortaichian extends Raza {
 		if(piedra-- > 0)
 			return 0;
 		
-		hp = maxhp*0.4 + hp > maxhp ? maxhp : (int)(maxhp*0.4)+hp; //Arreglar, hp tiene que ser double creo
+		hp = hp*4/100 + hp > maxhp ? maxhp : (hp*4/100)+hp;
 		return furia-- > 0 ? atk*2 : atk;
 	}
 

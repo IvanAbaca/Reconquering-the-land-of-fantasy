@@ -6,8 +6,8 @@ public abstract class Raza implements Comparable<Raza> {
 	//que ni usabamos en el tp anterior creo que menos le va a gustar
 	//todos estos doubles que están por acá, los vamos a tener que 
 	//cambiar más adelante.
-    protected double maxhp;
-    protected double hp;
+    protected int maxhp;
+    protected int hp;
     protected int atk;
     
     public Raza(int maxhp, int atk) {
@@ -35,7 +35,7 @@ public abstract class Raza implements Comparable<Raza> {
     	}
     }
     
-	private boolean derrotado() {
+	public boolean derrotado() {
 		return hp<=0;
 	}
 
@@ -43,32 +43,15 @@ public abstract class Raza implements Comparable<Raza> {
 		return maxhp;
 	}
 
-	public void setMaxhp(double maxhp) {
-		this.maxhp = maxhp;
-	}
-
 	public double getHp() {
 		return hp;
-	}
-
-	public void setHp(int hp) {
-		this.hp = hp;
 	}
 
 	public int getAtk() {
 		return atk;
 	}
-
-	public void setAtk(int atk) {
-		this.atk = atk;
-	}
     
 	public int compareTo(Raza o) {	
         return (int)(this.getHp() - o.getHp());
     }
-
-	@Override
-	public String toString() {
-		return "Raza [maxhp=" + maxhp + ", hp=" + hp + ", atk=" + atk + "]";
-	}
 }

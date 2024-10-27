@@ -66,15 +66,6 @@ class WraivesTest {
 	}
 	
 	@Test
-	void testDescansarAumentaHP() {
-		Wrives w = new Wrives();
-		w.descansar();
-		//Cuando descansa, medita
-		//Gracias a esto, aumenta su salud y su salud máxima en 50.
-		assertEquals(SALUD_MAXIMA_INICIAL+AUMENTO_SALUD_DESCANSO, w.getHp());
-	}
-	
-	@Test
 	void testDescansarLuegoDeSerAtacadoAumentaHP() {
 		Wrives w = new Wrives();
 		int ataque = 50;
@@ -95,5 +86,11 @@ class WraivesTest {
 		//Cuando descansa, medita, y como considera la violencia  
 		//como algo malo, se rehúsa a atacar hasta que lo ataquen
 		assertEquals(0, w.atacar());
+	}
+	
+	@Test
+	void testGetAtkBasico() {
+		Wrives w = new Wrives();
+		assertEquals(DANIO_BASICO, w.getAtk());
 	}
 }

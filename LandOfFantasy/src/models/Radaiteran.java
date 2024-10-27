@@ -10,7 +10,7 @@ public class Radaiteran extends Raza {
 
 	@Override
 	public int atacar() {
-		return atk*3*++turn;
+		return atk+(3*turn++);
 	}
 
 	@Override
