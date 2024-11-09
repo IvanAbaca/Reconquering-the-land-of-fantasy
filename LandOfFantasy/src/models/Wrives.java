@@ -1,12 +1,12 @@
 package models;
 
-public class Wrives extends Raza{
+public class Wrives extends Soldado{
 	
 	private boolean boost = false;
 	private boolean atacado = false;
 	
 	public Wrives() {
-		super(108, 113);
+		super(108, 113, "14 - 28");
 	}
 
 	@Override

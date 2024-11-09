@@ -17,7 +17,7 @@ public class Main {
 		lector.fileReader(archivo, PATH, FILENAME);
 		
 		Mapa mapa = Mapa.getMapa();
-		Ejercito ejercito = new Ejercito(mapa.getPuebloInicial().getEjercito());
+		Unidad ejercito = new Unidad(mapa.getPuebloInicial().getEjercito());
 		List<Ciudad> camino = mapa.getPoblados().obtenerCamino(mapa.getPuebloInicial(), mapa.getPuebloFinal());
 		
 		int i = -1;

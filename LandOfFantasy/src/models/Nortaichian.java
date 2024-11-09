@@ -1,12 +1,12 @@
 package models;
 
-public class Nortaichian extends Raza {
+public class Nortaichian extends Soldado {
 
 	private int furia = 0;
 	private int piedra = 0;
 	
 	public Nortaichian() {
-		super(66, 18);
+		super(66, 18, "16 - 22");
 	}
 
 	@Override

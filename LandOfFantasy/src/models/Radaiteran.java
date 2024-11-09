@@ -1,11 +1,11 @@
 package models;
 
-public class Radaiteran extends Raza {
+public class Radaiteran extends Soldado {
 
 	private int turn = 0;
 	
 	public Radaiteran() {
-		super(36, 56);
+		super(36, 56, "17 - 41");
 	}
 
 	@Override
