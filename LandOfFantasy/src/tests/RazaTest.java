@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import models.Nortaichian;
 import models.Radaiteran;
-import models.Raza;
+import models.Soldado;
 import models.Wrives;
 
 class SoldadoTest {

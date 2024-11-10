@@ -8,8 +8,9 @@ public abstract class Unidad implements Comparable<Unidad> {
     protected int hp;
     protected int atk;
     protected String rango;
-    protected boolean propio = false; 
+    protected boolean propio = false;
     
+    protected static final boolean VICTORIA = true;
     
     //Constructor
     public Unidad(int maxhp, int atk, String rango) {
@@ -75,8 +76,9 @@ public abstract class Unidad implements Comparable<Unidad> {
     
     public abstract int atacar();
     public abstract void serAtacado(int dmg);
-    public abstract void descansar(Unidad u);
+    public abstract void descansar();
     public abstract boolean batallar(Unidad enemigo);
+    public abstract Unidad sumarMitadTropas();
    
     public boolean derrotado() {
 		return hp<=0;

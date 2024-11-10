@@ -6,7 +6,7 @@ import utils.FileReaderOIA;
 public class Main {
 
 	public static final String PATH = "LandOfFantasy/src/files/";
-	public static final String FILENAME = "pueblos3.in";
+	public static final String FILENAME = "pueblos.in";
 	
 	public static void main(String[] args) {
 		System.out.println("=====INICIO=====");
@@ -17,7 +17,7 @@ public class Main {
 		lector.fileReader(archivo, PATH, FILENAME);
 		
 		Mapa mapa = Mapa.getMapa();
-		Unidad ejercito = new Unidad(mapa.getPuebloInicial().getEjercito());
+		Batallon ejercito = new Batallon(mapa.getPuebloInicial().getEjercito());
 		List<Ciudad> camino = mapa.getPoblados().obtenerCamino(mapa.getPuebloInicial(), mapa.getPuebloFinal());
 		
 		int i = -1;

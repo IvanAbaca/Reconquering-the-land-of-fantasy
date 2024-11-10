@@ -1,6 +1,7 @@
 package models;
 
- 
+import java.util.PriorityQueue;
+
 public abstract class Soldado extends Unidad{
     
     public Soldado(int maxhp, int atk, String rango) {
@@ -16,14 +17,18 @@ public abstract class Soldado extends Unidad{
             enemigo.serAtacado(this.atacar());
 
             if(enemigo.derrotado())
-                return true;
+                return VICTORIA;
 
             this.serAtacado(enemigo.atacar());
 
             if(this.derrotado())
-                return false;
+                return !VICTORIA;
         }
     }
+    
+    public Unidad sumarMitadTropas() {
+		return this;
+	}
 
 	public int getMaxhp() {
 		return maxhp;

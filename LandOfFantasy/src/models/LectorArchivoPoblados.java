@@ -27,7 +27,7 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 		{
 			String[] datos = line[i].split(REGEX);
 			
-			PriorityQueue<Raza> tropa = new PriorityQueue<>();
+			PriorityQueue<Unidad> tropa = new PriorityQueue<>();
 			
 			for(int j = 0 ; j<Integer.parseInt(datos[1]) ; j++)
 				tropa.add(crearSoldado(datos[2]));
@@ -37,7 +37,9 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 			
 			boolean aliado = !(datos[3].toLowerCase().equals("enemigo")); //Nota: el nodo propio lo consideramos como aliado acá
 			
-			Ciudad ciudad = new Ciudad(tropa, aliado, Integer.parseInt(datos[0]));
+			Unidad unidadCiudad = new Batallon(tropa);
+			
+			Ciudad ciudad = new Ciudad(unidadCiudad, aliado, Integer.parseInt(datos[0]));
 //			this.mapa.getPoblados().agregarNodo(ciudad);
 			mapaAuxiliar.put(ciudad.getNumero(), ciudad);
 		}
@@ -55,9 +57,9 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 		}
 	}
 
-	private Raza crearSoldado(String tipoSoldado)
+	private Soldado crearSoldado(String tipoSoldado)
 	{
-		Raza soldado;
+		Soldado soldado;
 		
 		switch (tipoSoldado.toLowerCase()) {
 			case "wrives": {

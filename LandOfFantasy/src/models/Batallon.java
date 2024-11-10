@@ -12,40 +12,56 @@ public class Batallon extends Unidad {
 		this.unidades = new PriorityQueue<>(); // Por defecto, la cola de prioridad pone al menor primero
 	}
     
-    private void agregarUnidad(Unidad unidad) {
+    public Batallon(PriorityQueue<Unidad> u) {
+    	super(0,0,"");
+    	this.unidades = new PriorityQueue<>(u);
+		//this.unidades = u; 
+	}
+    
+    public Batallon(Unidad u) {
+    	super(0,0,"");
+    	this.unidades = new PriorityQueue<>();
+		agregarUnidad(u); // Por defecto, la cola de prioridad pone al menor primero
+	}
+    
+    // TODO: Constructor con cola de prioridad
+    
+    public void agregarUnidad(Unidad unidad) {
     	this.unidades.add(unidad);
     }
     
-    private void quitarUnidad(Unidad unidad) {
+    public void quitarUnidad(Unidad unidad) {
     	this.unidades.remove(unidad);
     }
 
-	private Unidad obtenerUnidad() {
+    public Unidad obtenerUnidad() {
     	return this.unidades.peek();
     }
 
-	private void actualizarUnidad() {
+    public void actualizarUnidad() {
     	this.unidades.add(unidades.poll());
     }
 
-	public void encuentro(Ciudad ciudad) {
-    	if(ciudad.isAliado())
-    		descansar(ciudad.getEjercito());
+	public void encuentro(Ciudad ciudad) { 
+    	if(ciudad.isAliado()) {
+    		descansar();
+    		agregarUnidad(ciudad.getEjercito().sumarMitadTropas());
+    	}
+    		
     	else
     		batallar(ciudad.getEjercito());
     }
     
-    public void descansar(Unidad aliados) {
-		
-		// TODO: Arreglar el descanso (parámetros que recibe son distintos)
-
+    public void descansar() {
     	this.unidades.forEach(unidad -> unidad.descansar());
-
-		// TODO: Añadir los aliados a la cola
     }
 
     public boolean derrotado() {
     	return this.unidades.isEmpty();
+    }
+    
+    public PriorityQueue<Unidad> Obtenerbatallon(){
+    	return this.unidades;
     }
     
 	@Override
@@ -76,13 +92,26 @@ public class Batallon extends Unidad {
 		Unidad soldado = obtenerUnidad();
     
 		while(soldado != null) {
-			if(soldado.batallar(enemigo)) {
+			if(soldado.batallar(enemigo) == VICTORIA) {
 				actualizarUnidad();
-				return true;
+				return VICTORIA;
 			}
 			quitarUnidad(soldado);
 			soldado = obtenerUnidad();
 		}
-		return false;
+		return !VICTORIA;
+	}
+	
+	public Unidad sumarMitadTropas() {
+		PriorityQueue<Unidad> tropa = new PriorityQueue<>();
+		int mitad = this.unidades.size() / 2;
+		
+		for(int i = 0; i < mitad; i++) {
+			tropa.add(this.unidades.poll());
+		}
+		
+		Unidad u = new Batallon(tropa);
+		
+		return u;
 	}
 }
