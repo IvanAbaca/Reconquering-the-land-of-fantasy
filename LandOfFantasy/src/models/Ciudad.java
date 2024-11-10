@@ -22,7 +22,6 @@ public class Ciudad {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "XD";//"("+ numero +", " + (aliado ? "aliada" : "enemiga") + ", " + this.ejercito.size() +", "+this.ejercito.peek().getClass() +")";
 	}
 

@@ -13,17 +13,17 @@ public abstract class Unidad implements Comparable<Unidad> {
     
     //Constructor
     public Unidad(int maxhp, int atk, String rango) {
-		this.maxhp = maxhp;
-		this.hp = maxhp;
-		this.atk = atk;
-		this.rango = rango;
+      this.maxhp = maxhp;
+      this.hp = maxhp;
+      this.atk = atk;
+      this.rango = rango;
     };
     
     public Unidad() {
-		this.maxhp = maxhp;
-		this.hp = maxhp;
-		this.atk = atk;
-		this.rango = rango;
+      this.maxhp = 0;
+      this.hp = 0;
+      this.atk = 0;
+      this.rango = "0 - 0";
     };
     
     public void setPropio() {
@@ -31,7 +31,7 @@ public abstract class Unidad implements Comparable<Unidad> {
     };
     
     //Public methods
-    public double getHp() {
+    public int getHp() {
     	
     	return hp;
     }
@@ -46,7 +46,7 @@ public abstract class Unidad implements Comparable<Unidad> {
     }
     
     public void serAtacado(Unidad enemigo) { // repensar logica
-    	double atk = enemigo.atacar() / soldados.size();
+    	int atk = enemigo.atacar() / soldados.size();
     	
     	for(Soldado soldado : soldados)
     		soldado.serAtacado(atk);
@@ -74,16 +74,17 @@ public abstract class Unidad implements Comparable<Unidad> {
     }*/
     
     public abstract int atacar();
-    public abstract void serAtacado(double dmg);
-    public abstract void descansar();
+    public abstract void serAtacado(int dmg);
+    public abstract void descansar(Unidad u);
     public abstract boolean batallar(Unidad enemigo);
    
     public boolean derrotado() {
 		return hp<=0;
 	}
 
-    //TODO
-    public int compareTo(Unidad o) {	// hay q checkear q mande al fondo a los fueron dañados, respetando que vengan primero los propio y despues el resto
+    // TODO: Hay que chequear que mande al fondo a los fueron dañados, respetando que vengan primero los propios y después el resto
+    
+    public int compareTo(Unidad o) {
         return (int)(this.getHp() - o.getHp());
     }
 }

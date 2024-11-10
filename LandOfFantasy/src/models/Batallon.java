@@ -9,15 +9,23 @@ public class Batallon extends Unidad {
     
     public Batallon() {
     	super(0,0,"");
-		this.unidades = new PriorityQueue<>();//Por defecto, la cola de prioridad pone al menor primero
+		this.unidades = new PriorityQueue<>(); // Por defecto, la cola de prioridad pone al menor primero
 	}
     
-    public void agregarUnidad(Unidad unidad) {
+    private void agregarUnidad(Unidad unidad) {
     	this.unidades.add(unidad);
     }
     
-    public void quitarUnidad(Unidad unidad) {
+    private void quitarUnidad(Unidad unidad) {
     	this.unidades.remove(unidad);
+    }
+
+	private Unidad obtenerUnidad() {
+    	return this.unidades.peek();
+    }
+
+	private void actualizarUnidad() {
+    	this.unidades.add(unidades.poll());
     }
 
 	public void encuentro(Ciudad ciudad) {
@@ -27,50 +35,54 @@ public class Batallon extends Unidad {
     		batallar(ciudad.getEjercito());
     }
     
-    public void descansar(PriorityQueue<Unidad> aliados) {
-    	this.unidades.forEach(unidad -> unidad.descansar());
-    	//añadir los aliados a la cola
-    }
-    
-    public boolean batallar(PriorityQueue<Unidad> enemigos) {
-    	
-    	Unidad enemigo = enemigos.poll();
+    public void descansar(Unidad aliados) {
 		
-    	// Pelea de los aliados
-    	Unidad aliado = aliados.poll();
-    	while(aliado != null && enemigo != null)
-    		if(aliado.batallar(enemigo))
-    			enemigo = enemigos.poll();
-    		else
-    			aliado = aliados.poll();
-    	
-    	if(enemigo == null) {
-    		aliados.add(aliado);
-    		return true;
-    	}
-    	
-		// Pelea de los propios
-    	Unidad propio = propios.poll();
-    	while(propio != null && enemigo != null)
-    		if(propio.batallar(enemigo))
-    			enemigo = enemigos.poll();
-    		else
-    			propio = propios.poll();
-    	
-    	if(enemigo == null) {
-    		propios.add(propio);
-    		return true;
-    	}
-    	
-    	return false;
+		// TODO: Arreglar el descanso (parámetros que recibe son distintos)
+
+    	this.unidades.forEach(unidad -> unidad.descansar());
+
+		// TODO: Añadir los aliados a la cola
     }
 
     public boolean derrotado() {
-    	return this.aliados.isEmpty() && this.propios.isEmpty();
+    	return this.unidades.isEmpty();
     }
     
 	@Override
 	public String toString() {
-		return "Ejercito [aliados=" + aliados + ", propios=" + propios + "]";
+		return "Ejercito [aliados=" + unidades +"]";
+	}
+
+	@Override
+	public int atacar() {
+		Unidad soldado = obtenerUnidad();
+    
+		return soldado.atacar();
+	}
+
+	@Override
+	public void serAtacado(int dmg) {
+		Unidad soldado = obtenerUnidad();
+    
+		soldado.serAtacado(dmg);
+		
+		if(soldado.derrotado()) {
+			quitarUnidad(soldado);
+		}
+	}
+
+	@Override
+	public boolean batallar(Unidad enemigo) {
+		Unidad soldado = obtenerUnidad();
+    
+		while(soldado != null) {
+			if(soldado.batallar(enemigo)) {
+				actualizarUnidad();
+				return true;
+			}
+			quitarUnidad(soldado);
+			soldado = obtenerUnidad();
+		}
+		return false;
 	}
 }
