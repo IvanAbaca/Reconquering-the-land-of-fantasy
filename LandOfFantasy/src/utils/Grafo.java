@@ -1,6 +1,14 @@
 package utils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.Stack;
 
 public class Grafo<T> {
 	private Map<T, List<Arista<T>>> adyacentes;
@@ -57,6 +65,9 @@ public class Grafo<T> {
 	public List<T> obtenerCamino(T nodoInicial, T nodoFinal)
 	{
 		List<T> camino = new ArrayList<>();
+		
+		Stack<T> path = new Stack<T>();
+		
 		Map<T, Integer> distancias = new HashMap<>();
 		Map<T, T> predecesores = new HashMap<>();
 		
@@ -65,13 +76,19 @@ public class Grafo<T> {
 		
 		this.dijkstra(nodoInicial, distancias, predecesores);
 		
-		camino.add(nodoFinal);
+		// camino.add(nodoFinal);
+		path.add(nodoFinal);
+		
 		T nodoActual = predecesores.get(nodoFinal);
 		while(nodoActual != nodoInicial)
 		{
-			camino.addFirst(nodoActual);
+			// camino.addFirst(nodoActual);
+			path.add(nodoActual);
 			nodoActual = predecesores.get(nodoActual);
 		}
+		
+		while(!path.isEmpty())
+			camino.add(path.pop());
 		
 		return camino;
 	}
