@@ -28,7 +28,7 @@ public abstract class Soldado extends Unidad{
     
     public Unidad sumarMitadTropas() {
 		return this;
-	}
+    }
 
 	public int getMaxhp() {
 		return maxhp;
@@ -40,6 +40,10 @@ public abstract class Soldado extends Unidad{
 
 	public int getAtk() {
 		return atk;
+	}
+	
+	public int ObtenerCantTropas(){
+		return 1;
 	}
 
 	// TODO: Compare por vida faltante, MODIFICAR	

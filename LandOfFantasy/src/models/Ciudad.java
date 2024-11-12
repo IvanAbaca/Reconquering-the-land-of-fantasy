@@ -7,6 +7,7 @@ public class Ciudad {
 	private boolean aliado;
 	private int numero;
 	Unidad ejercito;
+	int distancia;
 	
 	/*public Ciudad(PriorityQueue<Unidad> ejercito, boolean aliado, int numeroNodo) {
 		this.ejercito = ejercito;
@@ -20,9 +21,13 @@ public class Ciudad {
 		this.numero = numeroNodo;
 	}
 	
+	public void setDistancia(int d) {
+		this.distancia = d;
+	}
+	
 	@Override
 	public String toString() {
-		return "XD";//"("+ numero +", " + (aliado ? "aliada" : "enemiga") + ", " + this.ejercito.size() +", "+this.ejercito.peek().getClass() +")";
+		return "("+ numero + ")"; //+", " + (aliado ? "aliada" : "enemiga") + ", " + this.ejercito.size() +", "+this.ejercito.peek().getClass() +")";
 	}
 
 	public Unidad getEjercito() {
@@ -31,6 +36,10 @@ public class Ciudad {
 	
 	public int getNumero() {
 		return numero;
+	}
+	
+	public int getDistancia() {
+		return distancia;
 	}
 
 	public boolean isAliado() {

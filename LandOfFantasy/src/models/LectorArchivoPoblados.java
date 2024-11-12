@@ -20,7 +20,6 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 		
 		int cantidadPueblos = Integer.parseInt(line[0]);
 		this.mapa.setCantidadPueblos(cantidadPueblos);
-
 		int puebloPropio = -1;
 		HashMap<Integer, Ciudad> mapaAuxiliar = new HashMap<>();
 		for(int i = 1 ; i<cantidadPueblos+1 ; i++)
@@ -33,12 +32,11 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 				tropa.add(crearSoldado(datos[2]));
 			
 			if(datos[3].toLowerCase().equals("propio"))
-				puebloPropio = Integer.parseInt(datos[0]);
+				puebloPropio = Integer.parseInt(datos[0]);	
 			
 			boolean aliado = !(datos[3].toLowerCase().equals("enemigo")); //Nota: el nodo propio lo consideramos como aliado acá
 			
 			Unidad unidadCiudad = new Batallon(tropa);
-			
 			Ciudad ciudad = new Ciudad(unidadCiudad, aliado, Integer.parseInt(datos[0]));
 //			this.mapa.getPoblados().agregarNodo(ciudad);
 			mapaAuxiliar.put(ciudad.getNumero(), ciudad);
@@ -54,6 +52,17 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 		{
 			String[] datos = line[i].split(REGEX);
 			this.mapa.getPoblados().agregarArista(mapaAuxiliar.get(Integer.parseInt(datos[0])), mapaAuxiliar.get(Integer.parseInt(datos[1])), Integer.parseInt(datos[2]));
+			Ciudad origen = mapaAuxiliar.get(Integer.parseInt(datos[0]));
+		    Ciudad destino = mapaAuxiliar.get(Integer.parseInt(datos[1]));
+		    int peso = Integer.parseInt(datos[2]);
+		    
+		    // Asignar el peso a las ciudades
+		    if (origen != null) {
+		        origen.setDistancia(peso);
+		    }
+		    if (destino != null) {
+		        destino.setDistancia(peso);
+		    }
 		}
 	}
 

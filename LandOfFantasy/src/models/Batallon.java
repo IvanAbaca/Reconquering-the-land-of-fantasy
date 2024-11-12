@@ -114,4 +114,10 @@ public class Batallon extends Unidad {
 		
 		return u;
 	}
+	
+	public int ObtenerCantTropas(){
+		final int[] totalTropas = {0};
+	    this.unidades.forEach(unidad -> totalTropas[0] += unidad.ObtenerCantTropas());;
+	    return totalTropas[0];
+	}
 }
