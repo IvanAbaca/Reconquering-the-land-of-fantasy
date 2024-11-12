@@ -1,20 +1,26 @@
 package models;
 
-public class Radaiteran extends Raza {
+public class Radaiteran extends Soldado {
+
+	private static final int MAX_HP = 36;
+    private static final int ATK = 56;
+    private static final String RANGO = "17 - 41";
+
+	private static final int AUMENTO_ATK = 3;
 
 	private int turn = 0;
 	
 	public Radaiteran() {
-		super(36, 56);
+		super(MAX_HP, ATK, RANGO);
 	}
 
 	@Override
 	public int atacar() {
-		return atk+(3*turn++);
+		return atk+(AUMENTO_ATK*turn++);
 	}
 
 	@Override
-	public void serAtacado(double dmg) {
+	public void serAtacado(int dmg) {
 		hp -= dmg < hp ? dmg : hp;	
 	}
 

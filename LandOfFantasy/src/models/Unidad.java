@@ -2,66 +2,56 @@ package models;
 
 import java.util.List;
 
-public class Unidad implements Comparable<Unidad> {
-    List<Raza> soldados;
+public abstract class Unidad implements Comparable<Unidad> {
+	
+    protected int maxhp;
+    protected int hp;
+    protected int atk;
+    protected String rango;
+    protected boolean propio = false;
+    
+    protected static final boolean VICTORIA = true;
     
     //Constructor
-    public Unidad(List<Raza> soldados, boolean aliado) {
-    	this.soldados = soldados;
-    }
+    public Unidad(int maxhp, int atk, String rango) {
+      this.maxhp = maxhp;
+      this.hp = maxhp;
+      this.atk = atk;
+      this.rango = rango;
+    };
+    
+    public Unidad() {
+      this.maxhp = 0;
+      this.hp = 0;
+      this.atk = 0;
+      this.rango = "0 - 0";
+    };
+    
+    public void setPropio() {
+    	this.propio = true;
+    };
     
     //Public methods
-    public double getHp() {
-    	double hp = 0;
-    	
-    	for(Raza soldado : soldados)
-    		hp += soldado.getHp();
+    public int getHp() {
     	
     	return hp;
     }
     
-    public int atacar() {
-    	int atk = 0;
-    	
-    	for(Raza soldado : soldados)
-    		atk += soldado.atacar();
-    	
-    	return atk;
-    }
     
-    public void serAtacado(Unidad enemigo) {
-    	double atk = enemigo.atacar() / soldados.size();
-    	
-    	for(Raza soldado : soldados)
-    		soldado.serAtacado(atk);
-    	
-    	soldados.removeIf(soldado -> !(soldado.getHp() > 0));
-    }
-    
-    public boolean batallar(Unidad enemigo) {
-    	while(true) {	
-	    	enemigo.serAtacado(this);
-	    	
-	    	if(enemigo.desmayado())
-	    		return true;
-	    	
-	    	this.serAtacado(enemigo);
-	    	
-	    	if(this.desmayado())
-	    		return false;
-    	}
-    }
-    
-    public void descansar() {
-    	for(Raza soldado : soldados)
-    		soldado.descansar();
-    }
-    
-    public boolean desmayado() {
-    	return soldados.isEmpty();
-    }
+    public abstract int atacar();
+    public abstract void serAtacado(int dmg);
+    public abstract void descansar();
+    public abstract boolean batallar(Unidad enemigo);
+    public abstract Unidad sumarMitadTropas();
+    public abstract int ObtenerCantTropas();
+   
+    public boolean derrotado() {
+		return hp<=0;
+	}
 
-    public int compareTo(Unidad o) {	
+    // TODO: Hay que chequear que mande al fondo a los fueron dañados, respetando que vengan primero los propios y después el resto
+    
+    public int compareTo(Unidad o) {
         return (int)(this.getHp() - o.getHp());
     }
 }
