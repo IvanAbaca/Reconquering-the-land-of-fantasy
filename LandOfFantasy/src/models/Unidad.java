@@ -1,14 +1,11 @@
 package models;
 
-import java.util.List;
-
 public abstract class Unidad implements Comparable<Unidad> {
 	
     protected int maxhp;
     protected int hp;
     protected int atk;
     protected String rango;
-    protected boolean propio = false;
     
     protected static final boolean VICTORIA = true;
     
@@ -27,13 +24,8 @@ public abstract class Unidad implements Comparable<Unidad> {
       this.rango = "0 - 0";
     };
     
-    public void setPropio() {
-    	this.propio = true;
-    };
-    
     //Public methods
     public int getHp() {
-    	
     	return hp;
     }
     

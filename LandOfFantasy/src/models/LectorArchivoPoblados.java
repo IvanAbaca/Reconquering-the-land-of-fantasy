@@ -8,7 +8,7 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 
 	public static final String REGEX = "\\s+";
 	
-	Mapa mapa;
+	private Mapa mapa;
 	
 	public LectorArchivoPoblados() {
 		super();
