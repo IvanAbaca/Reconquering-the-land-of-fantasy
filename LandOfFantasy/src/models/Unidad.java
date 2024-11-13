@@ -43,7 +43,7 @@ public abstract class Unidad implements Comparable<Unidad> {
     public abstract void descansar();
     public abstract boolean batallar(Unidad enemigo);
     public abstract Unidad sumarMitadTropas();
-    public abstract int ObtenerCantTropas();
+    public abstract int obtenerCantTropas();
    
     public boolean derrotado() {
 		return hp<=0;

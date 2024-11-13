@@ -65,7 +65,6 @@ public class Grafo<T> {
 	public List<T> obtenerCamino(T nodoInicial, T nodoFinal)
 	{
 		List<T> camino = new ArrayList<>();
-		
 		Stack<T> path = new Stack<T>();
 		
 		Map<T, Integer> distancias = new HashMap<>();

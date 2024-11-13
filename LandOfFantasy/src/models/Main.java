@@ -25,7 +25,7 @@ public class Main {
 		Ciudad ciudadActual = null;
 		while(++i<camino.size() && !ejercito.derrotado()) {
 			System.out.println("contra: " + camino.get(i));
-			System.out.println("unidades: " + ejercito.ObtenerCantTropas());
+			System.out.println("unidades: " + ejercito.obtenerCantTropas());
 			ciudadActual = camino.get(i);
 			ejercito.encuentro(camino.get(i));
 			int distancia = camino.get(i).getDistancia();
@@ -37,8 +37,16 @@ public class Main {
 			cantDias++; //ya que por cada batalla o encuentro, yo pierdo 1 día
 		}
 			
-		System.out.println("El ejercito fue "+ ( ejercito.derrotado() ? "Derrotado en " + ciudadActual + " Donde se enfrentó a " + ciudadActual.getEjercito().ObtenerCantTropas() + " Soldado/s enemigos. Duración: " + cantDias + " Día/s": "Victorioso, con " + ejercito.ObtenerCantTropas() + " soldado/s. Duración: " + cantDias + " Día/s" ));
 		
+		System.out.print("El ejercito fue"); 
+		if(ejercito.derrotado())
+			System.out.println(	" derrotado en " 			+ ciudadActual + 
+								" Donde se enfrentó a " 	+ ciudadActual.getEjercito().obtenerCantTropas() + " Soldado/s enemigos."+
+								" Duración: " 				+ cantDias + " Día/s");
+		else
+			System.out.println(	" victorioso, con " + ejercito.obtenerCantTropas() + " soldado/s."+
+								" Duración: " + cantDias + " Día/s" );
+
 		System.out.println("======FIN======");
 	}
 
