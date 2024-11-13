@@ -1,7 +1,5 @@
 package models;
 
-import java.util.PriorityQueue;
-
 public abstract class Soldado extends Unidad{
     
     public Soldado(int maxhp, int atk, String rango) {
