@@ -71,7 +71,10 @@ public class Grafo<T> {
 		Map<T, T> predecesores = new HashMap<>();
 		
 		if(nodoInicial == nodoFinal)
+		{
+			camino.add(nodoInicial);
 			return camino;
+		}
 		
 		this.dijkstra(nodoInicial, distancias, predecesores);
 		
@@ -85,6 +88,8 @@ public class Grafo<T> {
 			path.add(nodoActual);
 			nodoActual = predecesores.get(nodoActual);
 		}
+		
+		path.add(nodoActual);
 		
 		while(!path.isEmpty())
 			camino.add(path.pop());

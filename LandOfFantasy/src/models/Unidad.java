@@ -20,16 +20,19 @@ public abstract class Unidad implements Comparable<Unidad> {
       this.rango = rango;
     };
     
+    
+    /*
     public Unidad() {
       this.maxhp = 0;
       this.hp = 0;
       this.atk = 0;
       this.rango = "0 - 0";
-    };
+    };  */
     
+    /*
     public void setPropio() {
     	this.propio = true;
-    };
+    };*/
     
     //Public methods
     public int getHp() {
