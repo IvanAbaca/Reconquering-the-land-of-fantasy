@@ -32,11 +32,11 @@ public class LectorArchivoPoblados extends TextProcessor<LectorArchivoPoblados> 
 				tropa.add(crearSoldado(datos[2]));
 			
 			if(datos[3].toLowerCase().equals("propio"))
-				puebloPropio = Integer.parseInt(datos[0]);	
+				puebloPropio = Integer.parseInt(datos[0]);
 			
 			boolean aliado = !(datos[3].toLowerCase().equals("enemigo")); //Nota: el nodo propio lo consideramos como aliado acá
 			
-			Unidad unidadCiudad = new Batallon(tropa);
+			Unidad unidadCiudad = new Batallon(tropa, datos[3].toLowerCase().equals("propio"));
 			Ciudad ciudad = new Ciudad(unidadCiudad, aliado, Integer.parseInt(datos[0]));
 //			this.mapa.getPoblados().agregarNodo(ciudad);
 			mapaAuxiliar.put(ciudad.getNumero(), ciudad);

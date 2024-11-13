@@ -10,7 +10,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		System.out.println("=====INICIO=====");
-		
+
 		FileReaderOIA<LectorArchivoPoblados> lector = new FileReaderOIA<>();
 		LectorArchivoPoblados archivo = new LectorArchivoPoblados();
 		
@@ -38,7 +38,6 @@ public class Main {
 		}
 			
 		System.out.println("El ejercito fue "+ ( ejercito.derrotado() ? "Derrotado en " + ciudadActual + " Donde se enfrentó a " + ciudadActual.getEjercito().ObtenerCantTropas() + " Soldado/s enemigos. Duración: " + cantDias + " Día/s": "Victorioso, con " + ejercito.ObtenerCantTropas() + " soldado/s. Duración: " + cantDias + " Día/s" ));
-		
 		System.out.println("======FIN======");
 	}
 

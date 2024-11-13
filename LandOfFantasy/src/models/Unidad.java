@@ -6,6 +6,7 @@ public abstract class Unidad implements Comparable<Unidad> {
     protected int hp;
     protected int atk;
     protected String rango;
+    protected boolean propio = false;
     
     protected static final boolean VICTORIA = true;
     
@@ -16,6 +17,11 @@ public abstract class Unidad implements Comparable<Unidad> {
       this.atk = atk;
       this.rango = rango;
     };
+    
+    public Unidad(int maxhp, int atk, String rango, boolean propio) {
+    	this(maxhp, atk, rango);
+    	this.propio = propio;
+    }
     
     public Unidad() {
       this.maxhp = 0;
@@ -44,6 +50,9 @@ public abstract class Unidad implements Comparable<Unidad> {
     // TODO: Hay que chequear que mande al fondo a los fueron dañados, respetando que vengan primero los propios y después el resto
     
     public int compareTo(Unidad o) {
+    	if((this.getHp() - o.getHp()) == 0)
+    		return this.propio ? -1 : 1;
+    		
         return (int)(this.getHp() - o.getHp());
     }
 }

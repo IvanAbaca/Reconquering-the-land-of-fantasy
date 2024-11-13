@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class Batallon extends Unidad {
@@ -8,24 +9,30 @@ public class Batallon extends Unidad {
     
     public Batallon() {
     	super(0,0,"");
-		this.unidades = new PriorityQueue<>(); // Por defecto, la cola de prioridad pone al menor primero
+		this.unidades = new PriorityQueue<>(Collections.reverseOrder()); // Por defecto, la cola de prioridad pone al menor primero
 	}
     
     public Batallon(PriorityQueue<Unidad> u) {
-    	super(0,0,"");
-    	this.unidades = new PriorityQueue<>(u);
-		//this.unidades = u; 
+    	this();
+    	//No podemos guardar una cola de prioridad tal y como está
+    	//nos tenemos que asegurar de que tenga el orden correcto 
+    	//para la clase Batallón
+    	u.forEach(e -> this.unidades.add(e));
 	}
     
     public Batallon(Unidad u) {
-    	super(0,0,"");
-    	this.unidades = new PriorityQueue<>();
-		agregarUnidad(u); // Por defecto, la cola de prioridad pone al menor primero
+    	this();
+		agregarUnidad(u);
 	}
     
     // TODO: Constructor con cola de prioridad
     
-    public void agregarUnidad(Unidad unidad) {
+    public Batallon(PriorityQueue<Unidad> unidades, boolean propio) {
+    	this(unidades);
+    	this.propio = propio;
+	}
+
+	public void agregarUnidad(Unidad unidad) {
     	this.unidades.add(unidad);
     }
     
