@@ -1,11 +1,8 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Graficos {
-	private static ArrayList<Ciudad> camino = new ArrayList<>();
-	private static ArrayList<Integer> cantSoldados = new ArrayList<>();
 	
 	public static void animacionPartida(int ciudadPartida , int soldados) {
 		String partida = """
@@ -293,7 +290,7 @@ _/__|___/___/_______________/__|____\\_____________/__/__________|__\\____
 -~--~                   ~---__|,--~'                  ~~----_____-~'   `~----~~
 			         """;
 		
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			if(i%2==0)
 				System.out.println(victoria);
 			else
@@ -304,7 +301,7 @@ _/__|___/___/_______________/__|____\\_____________/__/__________|__\\____
 			esperarYBorrarConsola(1000);				
 		}
 		
-		System.out.println(victoria2);
+		System.out.println(victoria);
 		caminoRecorrido(camino);
 		System.out.println(	" El ejercito fue victorioso, con " + cantSoldados + " soldado/s."+
 				" Duración: " + cantDias + " Día/s" );
