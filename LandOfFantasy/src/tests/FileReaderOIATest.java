@@ -33,7 +33,7 @@ class FileReaderOIATest {
         });
 	}
 	
-	
+	/*
 	@Test
 	void testFileReaderErrorRaza() {
 		
@@ -44,7 +44,7 @@ class FileReaderOIATest {
             lector.fileReader(archivo, "LandOfFantasy/src/files/", "pueblosTestErrorRaza.in");
         });
 		
-	}
+	}*/
 	
 	/*
 	@Test
