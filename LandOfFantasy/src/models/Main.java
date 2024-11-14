@@ -9,7 +9,6 @@ public class Main {
 	public static final String FILENAME = "pueblos.in";
 	
 	public static void main(String[] args) {
-		System.out.println("=====INICIO=====");
 		
 		FileReaderOIA<LectorArchivoPoblados> lector = new FileReaderOIA<>();
 		LectorArchivoPoblados archivo = new LectorArchivoPoblados();
@@ -24,11 +23,19 @@ public class Main {
 		int i = -1;
 		Ciudad ciudadActual = null;
 		while(++i<camino.size() && !ejercito.derrotado()) {
-			//System.out.println("contra: " + camino.get(i));
-			//System.out.println("unidades: " + ejercito.obtenerCantTropas());
+
 			ciudadActual = camino.get(i);
 			ejercito.encuentro(camino.get(i));
-			Graficos.agregarCiudad(ciudadActual,  ejercito.obtenerCantTropas());
+
+			if(ciudadActual.isAliado())
+		    {	if(i==0)
+		    		Graficos.animacionPartida(ciudadActual.getNumero(),  ejercito.obtenerCantTropas());
+		    	else 
+		    		Graficos.animacionDescanso(ciudadActual.getNumero(),  ejercito.obtenerCantTropas());
+		    }
+		    else {
+		    	Graficos.animacionBatalla(ciudadActual.getNumero(),  ejercito.obtenerCantTropas());
+		    }
 			int distancia = camino.get(i).getDistancia();
 			
 			while(distancia > 10) { // mientras la distancia sea mayor a 10km
@@ -38,16 +45,14 @@ public class Main {
 			cantDias++; //ya que por cada batalla o encuentro, yo pierdo 1 día
 		}
 		
-		Graficos.animacionDeCamino();
+
 		
-		System.out.print("El ejercito fue"); 
-		if(ejercito.derrotado())
-			System.out.println(	" derrotado en " 			+ ciudadActual + 
-								" Donde se enfrentó a " 	+ ciudadActual.getEjercito().obtenerCantTropas() + " Soldado/s enemigos."+
-								" Duración: " 				+ cantDias + " Día/s");
-		else
-			System.out.println(	" victorioso, con " + ejercito.obtenerCantTropas() + " soldado/s."+
-								" Duración: " + cantDias + " Día/s" );
+		if(ejercito.derrotado()) {
+			Graficos.animacionMuerte(camino, ciudadActual.getNumero() ,ciudadActual.getEjercito().obtenerCantTropas() ,  cantDias);	
+		}
+		else {
+			Graficos.animacionVictoria(camino, ejercito.obtenerCantTropas(), cantDias);
+		}
 
 	}
 
