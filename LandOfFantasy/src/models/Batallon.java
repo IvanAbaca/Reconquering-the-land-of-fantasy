@@ -46,10 +46,13 @@ public class Batallon extends Unidad {
     	if(ciudad.isAliado()) {
     		descansar();
     		agregarUnidad(ciudad.getEjercito().sumarMitadTropas());
+    		
     	}
     		
     	else
     		batallar(ciudad.getEjercito());
+    	
+    	Graficos.agregarCiudad(ciudad,  this.obtenerCantTropas());
     }
     
     public void descansar() {
