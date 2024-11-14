@@ -40,7 +40,7 @@ public abstract class Soldado extends Unidad{
 		return atk;
 	}
 	
-	public int ObtenerCantTropas(){
+	public int obtenerCantTropas(){
 		return 1;
 	}
 

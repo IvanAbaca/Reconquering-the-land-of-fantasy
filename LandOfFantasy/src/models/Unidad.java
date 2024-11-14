@@ -17,19 +17,12 @@ public abstract class Unidad implements Comparable<Unidad> {
       this.atk = atk;
       this.rango = rango;
     };
-    
+
     public Unidad(int maxhp, int atk, String rango, boolean propio) {
     	this(maxhp, atk, rango);
     	this.propio = propio;
     }
-    
-    public Unidad() {
-      this.maxhp = 0;
-      this.hp = 0;
-      this.atk = 0;
-      this.rango = "0 - 0";
-    };
-    
+
     //Public methods
     public int getHp() {
     	return hp;
@@ -41,7 +34,7 @@ public abstract class Unidad implements Comparable<Unidad> {
     public abstract void descansar();
     public abstract boolean batallar(Unidad enemigo);
     public abstract Unidad sumarMitadTropas();
-    public abstract int ObtenerCantTropas();
+    public abstract int obtenerCantTropas();
    
     public boolean derrotado() {
 		return hp<=0;

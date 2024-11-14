@@ -52,10 +52,12 @@ public class Batallon extends Unidad {
     	if(ciudad.isAliado()) {
     		descansar();
     		agregarUnidad(ciudad.getEjercito().sumarMitadTropas());
+    		
     	}
     		
     	else
     		batallar(ciudad.getEjercito());
+
     }
     
     public void descansar() {
@@ -121,9 +123,12 @@ public class Batallon extends Unidad {
 		return u;
 	}
 	
-	public int ObtenerCantTropas(){
-		final int[] totalTropas = {0};
-	    this.unidades.forEach(unidad -> totalTropas[0] += unidad.ObtenerCantTropas());;
-	    return totalTropas[0];
+	public int obtenerCantTropas(){
+		int totalTropas = 0;
+	    
+	    for(Unidad u : unidades)
+	    	totalTropas += u.obtenerCantTropas();
+	    
+	    return totalTropas;
 	}
 }

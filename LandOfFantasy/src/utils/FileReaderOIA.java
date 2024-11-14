@@ -23,7 +23,7 @@ public class FileReaderOIA <T extends TextProcessor<T>> {
             obj.textProcess(data);
             
         } catch (IOException e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         }
     }
 
