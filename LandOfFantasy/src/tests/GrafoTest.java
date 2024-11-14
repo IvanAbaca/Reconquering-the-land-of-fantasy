@@ -4,9 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,11 +19,9 @@ class GrafoTest {
 	void caminoCompleto() {
 		
 		//Arrange
-		Grafo g = new Grafo();
+		Grafo<Ciudad> g = new Grafo<Ciudad>();
 		List<Ciudad> ciudades = new ArrayList<Ciudad>();
 		List<Ciudad> ciudadesExpected = new ArrayList<Ciudad>();		
-		Map<Ciudad, Integer> distancia = new HashMap<Ciudad, Integer>();
-		Map<Ciudad, Ciudad> predecesores = new HashMap<Ciudad, Ciudad>();
 		Ciudad c1 = new Ciudad(new Batallon(), true, 1);
 		Ciudad c2 = new Ciudad(new Batallon(), true, 2);
 		Ciudad c3 = new Ciudad(new Batallon(), true, 3);
@@ -67,12 +63,10 @@ class GrafoTest {
 	void caminoDistancia0() {
 		
 		//Arrange
-		Grafo g = new Grafo();
+		Grafo<Ciudad> g = new Grafo<Ciudad>();
 		List<Ciudad> ciudades = new ArrayList<Ciudad>();
 		List<Ciudad> ciudadesExpected = new ArrayList<Ciudad>();
 		
-		Map<Ciudad, Integer> distancia = new HashMap<Ciudad, Integer>();
-		Map<Ciudad, Ciudad> predecesores = new HashMap<Ciudad, Ciudad>();
 		Ciudad c1 = new Ciudad(new Batallon(), true, 1);
 		Ciudad c2 = new Ciudad(new Batallon(), true, 2);
 		Ciudad c3 = new Ciudad(new Batallon(), true, 3);

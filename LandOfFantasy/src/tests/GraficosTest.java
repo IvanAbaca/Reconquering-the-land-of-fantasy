@@ -14,8 +14,9 @@ import models.Graficos;
 
 class GraficosTest {
 
+	
 	@Test
-	void test() {
+	void graficoTest() {
 		
 		Ciudad c1 = new Ciudad(new Batallon(), true, 1);
 		Ciudad c2 = new Ciudad(new Batallon(), true, 2);

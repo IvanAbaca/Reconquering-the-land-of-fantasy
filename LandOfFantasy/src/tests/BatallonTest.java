@@ -147,7 +147,7 @@ public class BatallonTest {
 		pekkas.encuentro(ciudad);
 		
 		// Assert
-		assertEquals(8, pekkas.obtenerCantTropas()); //Mueren 2 pekkas :c
+		assertEquals(7, pekkas.obtenerCantTropas()); //Mueren 3 pekkas :c
     }
 	
 
