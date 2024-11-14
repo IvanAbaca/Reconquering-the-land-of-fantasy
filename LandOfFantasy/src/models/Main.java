@@ -28,6 +28,7 @@ public class Main {
 			//System.out.println("unidades: " + ejercito.obtenerCantTropas());
 			ciudadActual = camino.get(i);
 			ejercito.encuentro(camino.get(i));
+			Graficos.agregarCiudad(ciudadActual,  ejercito.obtenerCantTropas());
 			int distancia = camino.get(i).getDistancia();
 			
 			while(distancia > 10) { // mientras la distancia sea mayor a 10km

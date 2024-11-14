@@ -52,7 +52,7 @@ public class Batallon extends Unidad {
     	else
     		batallar(ciudad.getEjercito());
     	
-    	Graficos.agregarCiudad(ciudad,  this.obtenerCantTropas());
+    	//Graficos.agregarCiudad(ciudad,  this.obtenerCantTropas());
     }
     
     public void descansar() {
