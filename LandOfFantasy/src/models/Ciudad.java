@@ -1,19 +1,10 @@
 package models;
 
-import java.util.PriorityQueue;
-
 public class Ciudad {
-	//private PriorityQueue<Unidad> ejercito;
 	private boolean aliado;
 	private int numero;
-	Unidad ejercito;
+	private Unidad ejercito;
 	int distancia;
-	
-	/*public Ciudad(PriorityQueue<Unidad> ejercito, boolean aliado, int numeroNodo) {
-		this.ejercito = ejercito;
-		this.aliado = aliado;
-		this.numero = numeroNodo;
-	}*/
 	
 	public Ciudad(Unidad ejercito, boolean aliado, int numeroNodo) {
 		this.ejercito = ejercito;
@@ -27,7 +18,7 @@ public class Ciudad {
 	
 	@Override
 	public String toString() {
-		return "("+ numero + ")"; //+", " + (aliado ? "aliada" : "enemiga") + ", " + this.ejercito.size() +", "+this.ejercito.peek().getClass() +")";
+		return "("+ numero + ")";
 	}
 
 	public Unidad getEjercito() {
